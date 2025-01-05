@@ -10,7 +10,10 @@ class App
      private static $_instance;
      private static $_db;
      private $entities = [];
-
+     
+     /**
+      * @return self
+      */
      public static function getInstance()
      {
           if (self::$_instance == null) self::$_instance = new self();
