@@ -14,7 +14,7 @@
           <div class="container-fluid d-flex align-items-center justify-content-center flex-column gap-3">
                <div class="container-sm d-flex align-items-center justify-content-between flex-row">
                     <h2 class="title">Les étudiants</h2>
-                    <a href="<?=Path('students.create')?>" class="mr-5 btn btn-primary">Ajouter</a>
+                    <a href="<?=path('students.create')?>" class="mr-5 btn btn-primary">Ajouter</a>
                </div>
                <?php if (isset($_SESSION)): ?>
                     <?php foreach($_SESSION as $key => $value): ?>
@@ -57,12 +57,12 @@
                                         </td>
                                         <td class="fw-bolder"><?=$student->nom?></td>
                                         <td><?=$student->prenom?></td>
-                                        <td class="fw-bolder" style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
-                                        <td><?=FormatDate($student->dob)?></td>
+                                        <td class="fw-bolder" style="color:<?=color($student->nomClass)?>"><?=$student->nomClass?></td>
+                                        <td><?=formatDate($student->dob)?></td>
                                         <td>
                                              <div class="d-flex gap-1">
-                                                  <a href="<?=Path('students.show', ['id' => $student->id])?>" class="btn btn-sm btn-success">Voir</a>
-                                                  <form method="POST" action="<?=Path('students.remove', ['id' => $student->id])?>">
+                                                  <a href="<?=path('students.show', ['id' => $student->id])?>" class="btn btn-sm btn-success">Voir</a>
+                                                  <form method="POST" action="<?=path('students.remove', ['id' => $student->id])?>">
                                                        <input type="submit" class="btn btn-sm btn-danger" value="Supprimer">
                                                   </form>
                                              </div>

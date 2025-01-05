@@ -6,11 +6,11 @@
             "Services\\": "services/"
         },
         "files": [
-            "helpers/Color.php",
-            "helpers/Path.php",
-            "helpers/FormatDate.php",
-            "helpers/ImageUpload.php",
-            "helpers/Amount.php"
+            "helpers/color.php",
+            "helpers/path.php",
+            "helpers/formatDate.php",
+            "helpers/imageUpload.php",
+            "helpers/amount.php"
         ]
     },
     "authors": [
