@@ -12,6 +12,11 @@ class Controller
 
      }
 
+     /**
+      * @template T of object
+      * @param class-string<T> $className
+      * @return T 
+      */
      protected function getManager(string $table)
      {
           return App::getInstance()->getEntity($table);

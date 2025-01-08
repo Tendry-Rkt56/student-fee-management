@@ -5,6 +5,6 @@ namespace App\Entity;
 class Student extends Entity
 {
 
-     protected $table = "classes";
+     protected $table = "students";
 
 }
