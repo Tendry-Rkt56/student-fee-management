@@ -2,7 +2,8 @@
     "name": "tendry/students",
     "autoload": {
         "psr-4": {
-            "Tendry\\Students\\": "src/"
+            "App\\": "src/",
+            "Config\\": "config/"
         }
     },
     "authors": [
