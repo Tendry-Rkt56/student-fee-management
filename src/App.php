@@ -23,6 +23,11 @@ class App
           return self::$_db;
      }
 
+     /**
+      * @template T of object
+      * @param class-string<T> $className
+      * @return T 
+      */
      public function getEntity(string $table)
      {
           if (!isset($this->entities[$table])) $this->entities[$table] = new $table($this->getDb());
