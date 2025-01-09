@@ -22,7 +22,7 @@ class Controller
           return App::getInstance()->getEntity($table);
      }
 
-     protected function render(string $view, array $data = [], bool $html = true)
+     protected function render(string $view, array $data = [], bool $html = false)
      {
           extract($data);
           $template = $html ? '.html' : '.html.php';

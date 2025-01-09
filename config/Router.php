@@ -1,6 +1,7 @@
 <?php
 
 use App\Container;
+use App\Controller\DashboardController;
 use App\Controller\StudentController;
 use Services\Routing;
 
@@ -13,6 +14,8 @@ $container = new Container();
 $router->map('GET', '/admin/students', function () use ($container) {
      $container->getController(StudentController::class)->index();
 });
+
+$router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard());
 
 $match = $router->match();
 if ($match !== null) {
