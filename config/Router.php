@@ -27,6 +27,14 @@ $router->map('POST', '/students/create', function () use ($container) {
      $container->getController(StudentController::class)->store($_POST, $_FILES);
 }, 'students.store');
 
+$router->map('GET', '/students/edit/[i:id]', function ($id) use ($container) {
+     $container->getController(StudentController::class)->edit($id);
+}, 'students.edit');
+
+$router->map('POST', '/students/edit/[i:id]', function ($id) use ($container) {
+     $container->getController(StudentController::class)->update($id, $_POST, $_FILES);
+}, 'students.update');
+
 $router->map('POST', '/students/remove/[i:id]', function ($id) use ($container) {
      $container->getController(StudentController::class)->remove($id);
 }, 'students.remove');

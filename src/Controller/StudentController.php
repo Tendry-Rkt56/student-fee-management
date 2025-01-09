@@ -50,11 +50,45 @@ class StudentController extends Controller
        
                throw new \Exception("Erreur lors de l'enregistrement de l'étudiant(e).");
                
-               } catch (\Exception $e) {
-                    // Stocker le message d'erreur en session
-                    $_SESSION['danger'] = $e->getMessage();
-                    return $this->redirect('students.create');
+          } 
+          catch (\Exception $e) {
+               // Stocker le message d'erreur en session
+               $_SESSION['danger'] = $e->getMessage();
+               return $this->redirect('students.create');
+          }
+     }
+
+     public function edit(int $id)
+     {
+          $student = $this->getManager(Student::class)->findOne($id);
+          $classes = $this->getManager(Classe::class)->findAll();
+          return $this->render('students.edit', [
+               'student' => $student,
+               'classes' => $classes,
+          ]);
+     }
+
+     public function update(int $id, array $data = [], array $files = [])
+     {
+          try {
+       
+               // Insérer les données dans la base via le modèle
+               $store = $this->getManager(Student::class)->update($id, $data, $files);
+       
+               // Redirection en cas de succès
+               if ($store) {
+                   $_SESSION['success'] = "Etudiant(e) mis à jour";
+                   return $this->redirect('students.index');
                }
+       
+               throw new \Exception("Erreur lors de l'enregistrement de l'étudiant(e).");
+               
+          } 
+          catch (\Exception $e) {
+               // Stocker le message d'erreur en session
+               $_SESSION['danger'] = $e->getMessage();
+               return $this->redirect('students.edit');
+          }
      }
 
      public function remove(int $id)

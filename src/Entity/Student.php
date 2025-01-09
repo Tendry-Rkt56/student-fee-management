@@ -59,6 +59,21 @@ class Student extends Entity
           return $query->execute();
      }
 
+     public function update(int $id, array $data = [], array $files = [])
+     {
+          $sql = "UPDATE students SET nom = :nom, prenom = :prenom, class_id = :class_id, dob = :dob, image = :image WHERE id = :id";
+          $query = $this->db->getConn()->prepare($sql);
+          extract($data);
+          $student = $this->find($id);
+          $query->bindValue(':nom', $nom, \PDO::PARAM_STR);
+          $query->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
+          $query->bindValue(':class_id', $classe, \PDO::PARAM_INT);
+          $query->bindValue(':dob', $dob);
+          $query->bindValue(':image', ImageUpload($files['image'], 'images/students/', $student));
+          $query->bindValue(':id', $id, \PDO::PARAM_INT);
+          return $query->execute();
+     }
+
      public function delete(int $id)
      {
           $student = $this->find($id);

@@ -1,6 +1,6 @@
 <?php
   
-function ImageUpload(?array $file, string $uploadDir = 'uploads/'): ?string
+function ImageUpload(?array $file, string $uploadDir = 'uploads/', mixed $object = null): ?string
 {
      if (empty($file) || $file['error'] === UPLOAD_ERR_NO_FILE) {
           return null;
@@ -28,10 +28,14 @@ function ImageUpload(?array $file, string $uploadDir = 'uploads/'): ?string
           throw new \Exception("Échec du déplacement du fichier téléchargé.");
      }
 
+     if (isset($object->image)) {
+          removeFile($object->image);
+     }
+
      return '/'.$destination;
 }
 
-function removeFile(string $path = '')
+function removeFile(?string $path)
 {
      if ($path !== null) {
           $directory = substr($path, 1);
