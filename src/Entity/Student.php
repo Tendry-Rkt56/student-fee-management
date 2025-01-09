@@ -13,7 +13,7 @@ class Student extends Entity
                s.class_id = c.id WHERE s.id > :id";
           $id = 0;
           if (isset($data['search'])) {
-               $sql .= " AND (s.nom LIKE :search)";
+               $sql .= " AND (s.nom LIKE :search OR s.prenom LIKE :search)";
           }
           if (isset($data['classe']) && !empty($data['classe'])) {
                $sql .= " AND c.id = :classeId";
