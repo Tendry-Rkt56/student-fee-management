@@ -18,11 +18,11 @@
                     <a href="" class="btn btn-primary btn-sm">Ajouter</a>
                </div>
                <form action="" class="gap-4 justify-self-start container-fluid d-flex align-items-start justify-content-start flex-row gap-2">
-                    <input style="width:20%;" name="search" type="text" placeholder="Rechercher..." class="form-control">
+                    <input value="<?=$data['search'] ?? ''?>" style="width:20%;" name="search" type="text" placeholder="Rechercher..." class="form-control">
                     <select style="width:20%;" class="form-select" name="classe" id="">
-                         <option value="">Classe</option>
+                         <option value="">Tous</option>
                          <?php foreach($classes as $classe): ?>
-                              <option value="<?=$classe->id?>"><?=$classe->nom?></option>     
+                              <option <?php if (array_key_exists('classe', $data) && $data['classe'] == $classe->id): ?> selected <?php endif ?> value="<?=$classe->id?>"><?=$classe->nom?></option>     
                          <?php endforeach ?>
                     </select>
                     <input type="submit" class="btn btn-sm btn-primary">
@@ -42,7 +42,7 @@
                               <tr>
                                    <td class="fw-bolder"><?=$student->nom?></td>
                                    <td><?=$student->prenom?></td>
-                                   <td class="fw-bolder" style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
+                                   <td class="fw-bolder     " style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
                                    <td><?=$student->dob?></td>
                                    <td>
                                         <div class="d-flex gap-1">

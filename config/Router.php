@@ -12,7 +12,7 @@ $router = Routing::get();
 $container = new Container();
 
 $router->map('GET', '/students', function () use ($container) {
-     $container->getController(StudentController::class)->index();
+     $container->getController(StudentController::class)->index($_GET);
 });
 
 $router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard());
