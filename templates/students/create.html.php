@@ -10,7 +10,7 @@
 
      <?php require_once 'components/base.html.php' ?>
 
-     <div style="position:absolute;top:30%;left:220px;width:calc(100% - 200px)">
+     <div style="box-shadow:-4px 4px 10px 0Px rgba(0,0,0,0.4);padding:30px;position:absolute;top:20%;left:220px;width:calc(100% - 200px)">
           <div class="container-fluid d-flex align-items-center justify-content-center flex-column gap-3">
                <h2 class="align-self-start">Nouveau</h2>
                <?php if (isset($_SESSION)): ?>
@@ -21,7 +21,7 @@
                          <?php endif?>
                     <?php endforeach?>
                <?php endif ?>
-               <form method="POST" action="" enctype="multipart/form-data" class="justify-self-start align-self-start container d-flex align-items-center justify-content-start flex-column gap-4">
+               <form method="POST" action="" enctype="multipart/form-data" class="justify-self-start align-self-start container d-flex align-items-center justify-content-start flex-column gap-3">
                     <div class="row container">
                          <div class="col-sm-6 d-flex align-items-center justify-content-center flex-row gap-1">
                               <label style="width:20%" for="nom" class="fw-bolder">Nom:</label>
@@ -56,7 +56,7 @@
                               <input style="width:80%" type="date" name="contact" id="dob" class="form-control" placeholder="Date de naissance...">
                          </div>
                     </div>
-                    <input type="submit" class="ml-5 btn btn-primary" value="Enregistrer">
+                    <input type="submit" class="my-3 btn btn-primary" value="Enregistrer">
                </form>
           </div>
      </div>
