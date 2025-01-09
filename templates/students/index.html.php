@@ -15,7 +15,7 @@
           <div class="container-fluid d-flex align-items-center justify-content-center flex-column gap-3">
                <div class="container d-flex align-items-center justify-content-between flex-row">
                     <h2 class="title">Les étudiants</h2>
-                    <a href="" class="btn btn-primary btn-sm">Ajouter</a>
+                    <a href="<?=Path('students.create')?>" class="btn btn-primary btn-sm">Ajouter</a>
                </div>
                <?php if (isset($_SESSION)): ?>
                     <?php foreach($_SESSION as $key => $value): ?>

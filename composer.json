@@ -6,7 +6,8 @@
             "Services\\": "services/"
         },
         "files": [
-            "helpers/Color.php"
+            "helpers/Color.php",
+            "helpers/Path.php"
         ]
     },
     "authors": [
