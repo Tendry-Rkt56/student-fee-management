@@ -38,22 +38,28 @@
                          </tr>
                     </thead>
                     <tbody>
-                         <?php foreach($students as $student): ?>
+                         <?php if (isset($students) && !empty($students)): ?>
+                              <?php foreach($students as $student): ?>
+                                   <tr>
+                                        <td class="fw-bolder"><?=$student->nom?></td>
+                                        <td><?=$student->prenom?></td>
+                                        <td class="fw-bolder     " style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
+                                        <td><?=$student->dob?></td>
+                                        <td>
+                                             <div class="d-flex gap-1">
+                                                  <a href="" class="btn btn-sm btn-success">Editer</a>
+                                                  <form action="">
+                                                       <input type="submit" class="btn btn-sm btn-danger" value="Supprimer">
+                                                  </form>
+                                             </div>
+                                        </td>
+                                   </tr>
+                              <?php endforeach ?>
+                         <?php else: ?>
                               <tr>
-                                   <td class="fw-bolder"><?=$student->nom?></td>
-                                   <td><?=$student->prenom?></td>
-                                   <td class="fw-bolder     " style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
-                                   <td><?=$student->dob?></td>
-                                   <td>
-                                        <div class="d-flex gap-1">
-                                             <a href="" class="btn btn-sm btn-success">Editer</a>
-                                             <form action="">
-                                                  <input type="submit" class="btn btn-sm btn-danger" value="Supprimer">
-                                             </form>
-                                        </div>
-                                   </td>
+                                   <td colspan="5" class="text-center">Pas d'étudiants correspondants</td>
                               </tr>
-                         <?php endforeach ?>
+                         <?php endif ?>
                     </tbody>
                </table>
           </div>
