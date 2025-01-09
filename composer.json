@@ -4,7 +4,10 @@
         "psr-4": {
             "App\\": "src/",
             "Services\\": "services/"
-        }
+        },
+        "files": [
+            "helpers/Color.php"
+        ]
     },
     "authors": [
         {
