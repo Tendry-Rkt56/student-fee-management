@@ -13,7 +13,7 @@
 
      <div class="containers">
           <div class="container-fluid d-flex align-items-center justify-content-center flex-column gap-3">
-               <div class="container-fluid d-flex align-items-center justify-content-between flex-row">
+               <div class="container d-flex align-items-center justify-content-between flex-row">
                     <h2 class="title">Les étudiants</h2>
                     <a href="" class="btn btn-primary btn-sm">Ajouter</a>
                </div>
@@ -42,7 +42,7 @@
                               <tr>
                                    <td class="fw-bolder"><?=$student->nom?></td>
                                    <td><?=$student->prenom?></td>
-                                   <td><?=$student->nomClass?></td>
+                                   <td class="fw-bolder" style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
                                    <td><?=$student->dob?></td>
                                    <td>
                                         <div class="d-flex gap-1">
