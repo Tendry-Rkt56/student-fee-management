@@ -47,6 +47,8 @@ $router->map('GET', '/classes', fn () => $container->getController(ClasseControl
 $router->map('GET', '/classes/create', fn () => $container->getController(ClasseController::class)->create(), 'classes.create');
 $router->map('POST', '/classes/create', fn () => $container->getController(ClasseController::class)->store($_POST), 'classes.store');
 $router->map('POST', '/classes/remove/[i:id]', fn ($id) => $container->getController(ClasseController::class)->remove($id), 'classes.remove');
+$router->map('GET', '/classes/[i:id]', fn ($id) => $container->getController(ClasseController::class)->edit($id), 'classes.edit');
+$router->map('POST', '/classes/[i:id]', fn ($id) => $container->getController(ClasseController::class)->update($id, $_POST), 'classes.update');
 // Routes concernant les classes
 
 

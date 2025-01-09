@@ -24,10 +24,6 @@
                          <?php endif?>
                     <?php endforeach?>
                <?php endif ?>
-               <form action="" class="gap-2 justify-self-start container-fluid d-flex align-items-start justify-content-start flex-row gap-2">
-                    <input value="<?=$data['search'] ?? ''?>" style="width:15%;" name="search" type="text" placeholder="Rechercher..." class="form-control">
-                    <input type="submit" class="btn btn-sm btn-primary" value="Rechercher">
-               </form>
                <table style="font-family:Poppins;" class="table table-striped">
                     <thead>
                          <tr>
@@ -46,7 +42,7 @@
                                         <td><?=FormatDate($classe->created_at)?></td>
                                         <td>
                                              <div class="d-flex gap-1">
-                                                  <a href="<?=Path('students.show', ['id' => $classe->id])?>" class="btn btn-sm btn-success">Editer</a>
+                                                  <a href="<?=Path('classes.edit', ['id' => $classe->id])?>" class="btn btn-sm btn-success">Editer</a>
                                                   <a href="/students?classe=<?=$classe->id?>" class="btn btn-sm btn-primary">Les étudiants</a>
                                                   <form method="POST" action="<?=Path('classes.remove', ['id' => $classe->id])?>">
                                                        <input type="submit" class="btn btn-sm btn-danger" value="Supprimer">

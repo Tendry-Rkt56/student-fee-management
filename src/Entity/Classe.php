@@ -17,4 +17,15 @@ class Classe extends Entity
           return $query->execute();
      }
 
+     public function update(int $id, array $data = []): bool
+     {
+          $sql = "UPDATE classes SET nom = :nom WHERE id = :id";
+          $query = $this->db->getConn()->prepare($sql);
+          $query->bindValue(':nom', $data['nom'], \PDO::PARAM_STR);
+          $query->bindValue(':id', $id, \PDO::PARAM_INT);
+          $_SESSION['success'] = "Classe N°$id mise à jour";
+          return $query->execute();
+     }
+
+
 }
