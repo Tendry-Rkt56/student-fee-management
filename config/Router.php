@@ -15,6 +15,10 @@ $router->map('GET', '/students', function () use ($container) {
      $container->getController(StudentController::class)->index($_GET);
 }, 'students.index');
 
+$router->map('GET', '/students/[i:id]', function ($id) use ($container) {
+     $container->getController(StudentController::class)->show($id);
+}, 'students.show');
+
 $router->map('GET', '/students/create', function () use ($container) {
      $container->getController(StudentController::class)->create();
 }, 'students.create');

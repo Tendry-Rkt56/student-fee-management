@@ -54,8 +54,8 @@
                                         <td><?=FormatDate($student->dob)?></td>
                                         <td>
                                              <div class="d-flex gap-1">
-                                                  <a href="" class="btn btn-sm btn-success">Editer</a>
-                                                  <form method="POST" action="/students/remove/<?=$student->id?>">
+                                                  <a href="" class="btn btn-sm btn-success">Voir</a>
+                                                  <form method="POST" action="<?=Path('students.remove', ['id' => $student->id])?>">
                                                        <input type="submit" class="btn btn-sm btn-danger" value="Supprimer">
                                                   </form>
                                              </div>

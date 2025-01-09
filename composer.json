@@ -8,7 +8,8 @@
         "files": [
             "helpers/Color.php",
             "helpers/Path.php",
-            "helpers/FormatDate.php"
+            "helpers/FormatDate.php",
+            "helpers/ImageUpload.php"
         ]
     },
     "authors": [

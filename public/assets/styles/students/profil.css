@@ -1,0 +1,79 @@
+.student-profile {
+     max-width: 900px;
+     margin: 0 auto;
+     background-color: white;
+     border-radius: 10px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+     font-family:"Poppins";
+   }
+   
+   /* Header Section */
+   .profile-header {
+     display: flex;
+     align-items: center;
+     background-color: #2e7d32;
+     color: white;
+     padding: 20px;
+   }
+   
+   .profile-photo {
+     width: 100px;
+     height: 100px;
+     border-radius: 50%;
+     margin-right: 20px;
+     border: 3px solid white;
+   }
+   
+   .student-info h1 {
+     font-size: 1.5rem;
+     margin-bottom: 10px;
+   }
+   
+   .student-info p {
+     margin: 5px 0;
+   }
+   
+   /* Payments Section */
+   .payments {
+     padding: 20px;
+   }
+   
+   .payments h2 {
+     margin-bottom: 20px;
+     color: #2e7d32;
+   }
+   
+   table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 10px;
+   }
+   
+   thead {
+     background-color: #f1f8e9;
+   }
+   
+   thead th {
+     text-align: left;
+     padding: 10px;
+     color: #388e3c;
+   }
+   
+   tbody tr:nth-child(even) {
+     background-color: #f9f9f9;
+   }
+   
+   tbody td {
+     padding: 10px;
+     border: 1px solid #ddd;
+   }
+   
+   td:last-child {
+     text-transform: capitalize;
+     color: #388e3c;
+   }
+   
+   td:last-child:contains("en attente") {
+     color: #d32f2f;
+   }

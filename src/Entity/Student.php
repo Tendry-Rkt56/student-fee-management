@@ -34,6 +34,16 @@ class Student extends Entity
           $query->execute();
           return $query->fetchAll(\PDO::FETCH_OBJ);
      }
+
+     public function findOne(int $id)
+     {
+          $sql = "SELECT s.*, c.id AS idClass, c.nom AS nomClass FROM students AS s LEFT JOIN classes AS c ON 
+               s.class_id = c.id WHERE s.id = :id";
+          $query = $this->db->getConn()->prepare($sql);
+          $query->bindValue(':id', $id, \PDO::PARAM_INT);
+          $query->execute();
+          return $query->fetch(\PDO::FETCH_OBJ);
+     }
      
      
      public function store(array $data = [])

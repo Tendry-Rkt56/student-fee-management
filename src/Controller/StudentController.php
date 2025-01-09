@@ -19,6 +19,14 @@ class StudentController extends Controller
           ]);
      }
 
+     public function show(int $id)
+     {
+          $student = $this->getManager(Student::class)->findOne($id);
+          return $this->render('students.show', [
+               'student' => $student,
+          ]);
+     }
+
      public function create()
      {
           $classes = $this->getManager(Classe::class)->findAll();
