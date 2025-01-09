@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
+use AltoRouter;
 use App\App;
 
 class Controller 
 {
 
-     public function __construct(protected App $container)
+     public function __construct(protected App $container, protected AltoRouter $router)
      {    
 
      }
@@ -27,6 +28,12 @@ class Controller
           extract($data);
           $template = $html ? '.html' : '.html.php';
           require_once "../templates/".str_replace('.', '/', $view).$template;
+     }
+
+     protected function redirect(string $routeName, array $parameters)
+     {
+          header('Location: '.$this->router->generate($routeName, $parameters));
+          exit;
      }
 
 }
