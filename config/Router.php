@@ -43,7 +43,9 @@ $router->map('POST', '/students/remove/[i:id]', function ($id) use ($container) 
 // Routes concernant les étudiants
 
 // Routes concernant les classes
-$router->map('GET', '/classes', fn () => $container->getController(ClasseController::class)->index());
+$router->map('GET', '/classes', fn () => $container->getController(ClasseController::class)->index(), 'classes.index');
+$router->map('GET', '/classes/create', fn () => $container->getController(ClasseController::class)->create(), 'classes.create');
+$router->map('POST', '/classes/create', fn () => $container->getController(ClasseController::class)->store($_POST), 'classes.store');
 // Routes concernant les classes
 
 

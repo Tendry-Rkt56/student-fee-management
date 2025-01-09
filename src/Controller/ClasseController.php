@@ -15,6 +15,15 @@ class ClasseController extends Controller
           ]);
      }
 
-     
+     public function create()
+     {
+          return $this->render('classes.create');
+     }
+
+     public function store(array $data = [])
+     {
+          $store = $this->getManager(Classe::class)->store($data);
+          return $this->redirect('classes.index');
+     }
 
 }
