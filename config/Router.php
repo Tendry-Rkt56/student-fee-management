@@ -11,7 +11,7 @@ $router = Routing::get();
 
 $container = new Container();
 
-$router->map('GET', '/admin/students', function () use ($container) {
+$router->map('GET', '/students', function () use ($container) {
      $container->getController(StudentController::class)->index();
 });
 
