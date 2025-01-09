@@ -3,6 +3,7 @@
 use App\Container;
 use App\Controller\ClasseController;
 use App\Controller\DashboardController;
+use App\Controller\PaymentController;
 use App\Controller\StudentController;
 use Services\Routing;
 
@@ -49,6 +50,10 @@ $router->map('POST', '/classes/create', fn () => $container->getController(Class
 $router->map('POST', '/classes/remove/[i:id]', fn ($id) => $container->getController(ClasseController::class)->remove($id), 'classes.remove');
 $router->map('GET', '/classes/[i:id]', fn ($id) => $container->getController(ClasseController::class)->edit($id), 'classes.edit');
 $router->map('POST', '/classes/[i:id]', fn ($id) => $container->getController(ClasseController::class)->update($id, $_POST), 'classes.update');
+// Routes concernant les classes
+
+// Routes concernant les classes
+$router->map('GET', '/payment', fn () => $container->getController(PaymentController::class)->index());
 // Routes concernant les classes
 
 
