@@ -37,14 +37,13 @@ class Student extends Entity
 
      public function store(array $data = [])
      {
-          $sql = "INSERT INTO students(nom, prenom, class_id, dob, created_at) VALUES(:nom, :prenom, :class_id, :dob, :created_at)";
+          $sql = "INSERT INTO students(nom, prenom, class_id, dob) VALUES(:nom, :prenom, :class_id, :dob)";
           $query = $this->db->getConn()->prepare($sql);
           extract($data);
           $query->bindValue(':nom', $nom, \PDO::PARAM_STR);
           $query->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
           $query->bindValue(':class_id', $classe, \PDO::PARAM_INT);
           $query->bindValue(':dob', $dob);
-          $query->bindValue(':created_at', new \DateTimeImmutable());
           return $query->execute();
      }
 

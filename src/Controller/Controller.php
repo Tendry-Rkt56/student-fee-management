@@ -30,7 +30,7 @@ class Controller
           require_once "../templates/".str_replace('.', '/', $view).$template;
      }
 
-     protected function redirect(string $routeName, array $parameters)
+     protected function redirect(string $routeName, array $parameters = [])
      {
           header('Location: '.$this->router->generate($routeName, $parameters));
           exit;

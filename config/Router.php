@@ -13,7 +13,15 @@ $container = new Container();
 
 $router->map('GET', '/students', function () use ($container) {
      $container->getController(StudentController::class)->index($_GET);
-});
+}, 'students.index');
+
+$router->map('GET', '/students/create', function () use ($container) {
+     $container->getController(StudentController::class)->create();
+}, 'students.create');
+
+$router->map('POST', '/students/create', function () use ($container) {
+     $container->getController(StudentController::class)->store($_POST);
+}, 'students.store');
 
 $router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard());
 

@@ -170,6 +170,13 @@ header .profil-details i {
      left:220px;
 }
 
+.formContainers {
+     width:calc(100% - 200px);
+     position:absolute;
+     top:50%;
+     left:220px;
+}
+
 .dashboards {
      display:flex;
      align-items:center;
