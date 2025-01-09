@@ -30,11 +30,12 @@ class Student extends Entity
                $query->bindValue(':classeId', $data['classe'], \PDO::PARAM_INT);
           }
 
+          
           $query->execute();
           return $query->fetchAll(\PDO::FETCH_OBJ);
      }
-
-
+     
+     
      public function store(array $data = [])
      {
           $sql = "INSERT INTO students(nom, prenom, class_id, dob) VALUES(:nom, :prenom, :class_id, :dob)";
@@ -44,7 +45,9 @@ class Student extends Entity
           $query->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
           $query->bindValue(':class_id', $classe, \PDO::PARAM_INT);
           $query->bindValue(':dob', $dob);
+          $_SESSION['success'] = "Nouvel(le) étudiant(e) enregistré(e)";
           return $query->execute();
      }
+
 
 }

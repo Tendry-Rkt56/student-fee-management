@@ -4,8 +4,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Les étudiants</title>
-     <link rel="stylesheet" href="/assets/styles/base.css">
-     <link rel="stylesheet" href="/assets/styles/bootstrap.min.css">
+     <?php require_once 'components/head.html' ?>
 </head>
 <body>
      
@@ -35,7 +34,7 @@
                     </select>
                     <input type="submit" class="btn btn-sm btn-primary">
                </form>
-               <table class="table table-striped">
+               <table style="font-family:Poppins;" class="table table-striped">
                     <thead>
                          <tr>
                               <th>Nom</th>
@@ -51,7 +50,7 @@
                                    <tr>
                                         <td class="fw-bolder"><?=$student->nom?></td>
                                         <td><?=$student->prenom?></td>
-                                        <td class="fw-bolder     " style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
+                                        <td class="fw-bolder" style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
                                         <td><?=$student->dob?></td>
                                         <td>
                                              <div class="d-flex gap-1">
