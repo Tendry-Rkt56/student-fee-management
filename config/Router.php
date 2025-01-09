@@ -1,6 +1,7 @@
 <?php
 
 use App\Container;
+use App\Controller\ClasseController;
 use App\Controller\DashboardController;
 use App\Controller\StudentController;
 use Services\Routing;
@@ -11,6 +12,7 @@ $router = Routing::get();
 
 $container = new Container();
 
+// Routes concernant les étudiants
 $router->map('GET', '/students', function () use ($container) {
      $container->getController(StudentController::class)->index($_GET);
 }, 'students.index');
@@ -38,6 +40,12 @@ $router->map('POST', '/students/edit/[i:id]', function ($id) use ($container) {
 $router->map('POST', '/students/remove/[i:id]', function ($id) use ($container) {
      $container->getController(StudentController::class)->remove($id);
 }, 'students.remove');
+// Routes concernant les étudiants
+
+// Routes concernant les classes
+$router->map('GET', '/classes', fn () => $container->getController(ClasseController::class)->index());
+// Routes concernant les classes
+
 
 $router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard());
 
