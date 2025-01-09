@@ -51,7 +51,7 @@
                                         <td class="fw-bolder"><?=$student->nom?></td>
                                         <td><?=$student->prenom?></td>
                                         <td class="fw-bolder" style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
-                                        <td><?=$student->dob?></td>
+                                        <td><?=FormatDate($student->dob)?></td>
                                         <td>
                                              <div class="d-flex gap-1">
                                                   <a href="" class="btn btn-sm btn-success">Editer</a>
