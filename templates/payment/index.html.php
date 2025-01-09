@@ -6,6 +6,7 @@
     <title>Ajouter un Paiement</title>
     <?php require_once 'components/head.html' ?>
     <link rel="stylesheet" href="/assets/styles/payment/index.css">
+    <script src="/assets/script/payment.js" defer></script>
 </head>
 <body>
 
@@ -18,12 +19,9 @@
                     <!-- Champ pour sélectionner l'étudiant -->
                     <div class="mb-3">
                          <label for="student_id" class="form-label">Étudiant</label>
-                         <select class="form-select" id="student_id" name="student_id" required>
-                              <option value="">Sélectionnez un étudiant</option>
-                              <!-- Options dynamiques -->
-                              <option value="1">Alice</option>
-                              <option value="2">Bob</option>
-                         </select>
+                         <input type="text" id="student" class="form-control" placeholder="Séléctionner un étudiant...">
+                         <input type="hidden" name="student" id="hidden">
+                         <ul id="liste"></ul>
                     </div>
                     <!-- Champ pour le mois -->
                     <div class="mb-3">

@@ -36,6 +36,19 @@ class Student extends Entity
 
      }
 
+     public function fetch(string $search = '')
+     {
+          $sql = "SELECT * FROM students WHERE students.id > :id";
+          $id = 0;
+          $sql .= " AND (students.nom LIKE :search OR students.prenom LIKE :search)";
+          $query = $this->db->getConn()->prepare($sql);
+          $mot = '%'.$search.'%';
+          $query->bindValue(':id', $id, \PDO::PARAM_INT);
+          $query->bindValue(':search', $mot, \PDO::PARAM_STR);
+          $query->execute();
+          return $query->fetchAll(\PDO::FETCH_OBJ);
+     }
+
      public function count(array $data = [])
      {
           $sql = "SELECT count(s.id) FROM students AS s LEFT JOIN classes AS c ON 

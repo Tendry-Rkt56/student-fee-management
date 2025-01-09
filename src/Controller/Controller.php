@@ -30,6 +30,12 @@ class Controller
           require_once "../templates/".str_replace('.', '/', $view).$template;
      }
 
+     protected function json(array $data = [])
+     {
+          header('Content-Type : application/json');
+          echo json_encode($data);
+     }
+
      protected function redirect(string $routeName, array $parameters = [])
      {
           header('Location: '.$this->router->generate($routeName, $parameters));

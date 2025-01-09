@@ -30,6 +30,12 @@ class StudentController extends Controller
           ]);
      }
 
+     public function fetchAll(array $data = [])
+     {
+          $students = $this->getManager(Student::class)->fetch($data['search']);
+          return $this->json($students);
+     }
+
      public function show(int $id)
      {
           $student = $this->getManager(Student::class)->findOne($id);
