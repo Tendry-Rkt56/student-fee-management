@@ -24,14 +24,15 @@
                          <?php endif?>
                     <?php endforeach?>
                <?php endif ?>
-               <form action="" class="gap-4 justify-self-start container-fluid d-flex align-items-start justify-content-start flex-row gap-2">
-                    <input value="<?=$data['search'] ?? ''?>" style="width:20%;" name="search" type="text" placeholder="Rechercher..." class="form-control">
-                    <select style="width:20%;" class="form-select" name="classe" id="">
+               <form action="" class="gap-2 justify-self-start container-fluid d-flex align-items-start justify-content-start flex-row gap-2">
+                    <input value="<?=$data['search'] ?? ''?>" style="width:15%;" name="search" type="text" placeholder="Rechercher..." class="form-control">
+                    <select style="width:15%;" class="form-select" name="classe" id="">
                          <option value="">Tous</option>
                          <?php foreach($classes as $classe): ?>
                               <option <?php if (array_key_exists('classe', $data) && $data['classe'] == $classe->id): ?> selected <?php endif ?> value="<?=$classe->id?>"><?=$classe->nom?></option>     
                          <?php endforeach ?>
                     </select>
+                    <input value="<?=$limit?>" style="width:10%;" name="limit" type="number" placeholder="Pagination..." class="form-control">
                     <input type="submit" class="btn btn-sm btn-primary">
                </form>
                <table style="font-family:Poppins;" class="table table-striped">
@@ -75,6 +76,20 @@
                          <?php endif ?>
                     </tbody>
                </table>
+               <div style="width:60%" class="my-5 d-flex justify-content-between flex-row gap-1 align-items-center">
+                    <div class="justify-self-baseline fw-bolder"><?=$studentsLength?> / <?=$count?></div>
+                    <div class="d-flex justify-content-center flex-row gap-1 align-items-center">
+                         <?php for($i = 1; $i <= $maxPages; $i++): ?>
+                              <?php 
+                                   $query = isset($data['search']) ? 'search='.$data['search'] : '';
+                                   $query .= isset($data['classe']) ? '&classe='.$data['classe'] : '';     
+                                   $query .= isset($data['limit']) ? '&limit='.$data['limit'] : '';     
+                              ?>
+                         <?php $class = $i == $page ? 'btn-primary' : 'btn-outline-primary' ?>
+                              <a style="border-radius:50%;border:none" class="btn <?=$class?>" href="/students?page=<?=$i?><?="&".$query?>"><?=$i?></a>
+                         <?php endfor ?>
+                    </div>
+               </div>
           </div>
      </div>
 

@@ -10,12 +10,23 @@ class StudentController extends Controller
 
      public function index(array $data = [])
      {
-          $students = $this->getManager(Student::class)->findWithClasse($data);
+          $count = $this->getManager(Student::class)->count($data);
+          $page = $data['page'] ?? 1;
+          $limit = $data['limit'] ?? 3;
+          $maxPages = ceil($count / $limit);
+          $offset = ($page - 1) * $limit;  
+          $students = $this->getManager(Student::class)->findWithClasse($limit, $offset, $data);
           $classes = $this->getManager(Classe::class)->findAll();
+          $studentsLength = count($students);
           return $this->render('students.index', [
                'students' => $students,
                'classes' => $classes,
                'data' => $data,
+               'page' => $page,
+               'limit' => $limit,
+               'maxPages' => $maxPages,
+               'studentsLength' => $studentsLength,
+               'count' => $count,
           ]);
      }
 
