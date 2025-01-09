@@ -13,7 +13,15 @@
      <div style="position:absolute;top:30%;left:220px;width:calc(100% - 200px)">
           <div class="container-fluid d-flex align-items-center justify-content-center flex-column gap-3">
                <h2 class="align-self-start">Nouveau</h2>
-               <form method="POST" action="" class="justify-self-start align-self-start container d-flex align-items-center justify-content-start flex-column gap-4">
+               <?php if (isset($_SESSION)): ?>
+                    <?php foreach($_SESSION as $key => $value): ?>
+                         <?php if ($key == 'danger' || $key == 'success'):?>
+                              <p class="d-flex align-items-center justify-content-center container-sm alert alert-<?=$key?>"><?=$value?></p>
+                              <?php unset($_SESSION[$key])?>
+                         <?php endif?>
+                    <?php endforeach?>
+               <?php endif ?>
+               <form method="POST" action="" enctype="multipart/form-data" class="justify-self-start align-self-start container d-flex align-items-center justify-content-start flex-column gap-4">
                     <div class="row container">
                          <div class="col-sm-6 d-flex align-items-center justify-content-center flex-row gap-1">
                               <label style="width:20%" for="nom" class="fw-bolder">Nom:</label>
@@ -36,6 +44,16 @@
                          <div class="col-sm-6 d-flex align-items-center justify-content-center flex-row gap-1">
                               <label style="width:20%" for="dob" class="fw-bolder">Date de naissance:</label>
                               <input style="width:80%" type="date" name="dob" id="dob" class="form-control" placeholder="Date de naissance...">
+                         </div>
+                    </div>
+                    <div class="row container">
+                         <div class="col-sm-6 d-flex align-items-center justify-content-center flex-row gap-1">
+                              <label style="width:20%" for="image" class="fw-bolder">Image:</label>
+                              <input type="file" name="image" class="form-control" style="width:80%" placeholder="Image associée">
+                         </div>
+                         <div class="col-sm-6 d-flex align-items-center justify-content-center flex-row gap-1">
+                              <label style="width:20%" for="dob" class="fw-bolder">Date de naissance:</label>
+                              <input style="width:80%" type="date" name="contact" id="dob" class="form-control" placeholder="Date de naissance...">
                          </div>
                     </div>
                     <input type="submit" class="ml-5 btn btn-primary" value="Enregistrer">

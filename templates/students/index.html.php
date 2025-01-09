@@ -37,6 +37,7 @@
                <table style="font-family:Poppins;" class="table table-striped">
                     <thead>
                          <tr>
+                              <th></th>
                               <th>Nom</th>
                               <th>Prénom</th>
                               <th>Classe</th>
@@ -48,13 +49,18 @@
                          <?php if (isset($students) && !empty($students)): ?>
                               <?php foreach($students as $student): ?>
                                    <tr>
+                                        <td>
+                                             <?php if (isset($student->image) && !empty($student->image)): ?>
+                                                  <img src="<?=$student->image?>" style="width:40Px;height:40px;border-radius:50%;">
+                                             <?php endif ?>
+                                        </td>
                                         <td class="fw-bolder"><?=$student->nom?></td>
                                         <td><?=$student->prenom?></td>
                                         <td class="fw-bolder" style="color:<?=Color($student->nomClass)?>"><?=$student->nomClass?></td>
                                         <td><?=FormatDate($student->dob)?></td>
                                         <td>
                                              <div class="d-flex gap-1">
-                                                  <a href="" class="btn btn-sm btn-success">Voir</a>
+                                                  <a href="<?=Path('students.show', ['id' => $student->id])?>" class="btn btn-sm btn-success">Voir</a>
                                                   <form method="POST" action="<?=Path('students.remove', ['id' => $student->id])?>">
                                                        <input type="submit" class="btn btn-sm btn-danger" value="Supprimer">
                                                   </form>

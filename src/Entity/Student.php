@@ -46,17 +46,28 @@ class Student extends Entity
      }
      
      
-     public function store(array $data = [])
+     public function store(array $data = [], array $files = [])
      {
-          $sql = "INSERT INTO students(nom, prenom, class_id, dob) VALUES(:nom, :prenom, :class_id, :dob)";
+          $sql = "INSERT INTO students(nom, prenom, class_id, dob, image) VALUES(:nom, :prenom, :class_id, :dob, :image)";
           $query = $this->db->getConn()->prepare($sql);
           extract($data);
           $query->bindValue(':nom', $nom, \PDO::PARAM_STR);
           $query->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
           $query->bindValue(':class_id', $classe, \PDO::PARAM_INT);
           $query->bindValue(':dob', $dob);
-          $_SESSION['success'] = "Nouvel(le) étudiant(e) enregistré(e)";
+          $query->bindValue(':image', ImageUpload($files['image'], 'images/students/'));
           return $query->execute();
+     }
+
+     public function delete(int $id)
+     {
+          $student = $this->find($id);
+          removeFile($student->image);
+          $sql = "DELETE FROM $this->table WHERE id = :id";
+          $stmt = $this->db->getConn()->prepare($sql);
+          $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+          $_SESSION['danger'] = "Etudiant(e) N° $id supprimé(e)";
+          return $stmt->execute();
      }
 
 

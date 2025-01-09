@@ -24,7 +24,7 @@ $router->map('GET', '/students/create', function () use ($container) {
 }, 'students.create');
 
 $router->map('POST', '/students/create', function () use ($container) {
-     $container->getController(StudentController::class)->store($_POST);
+     $container->getController(StudentController::class)->store($_POST, $_FILES);
 }, 'students.store');
 
 $router->map('POST', '/students/remove/[i:id]', function ($id) use ($container) {

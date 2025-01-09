@@ -35,15 +35,31 @@ class StudentController extends Controller
           ]);
      }
 
-     public function store(array $data = [])
+     public function store(array $data = [], array $files = [])
      {
-          $store = $this->getManager(Student::class)->store($data);
-          return $store ? $this->redirect('students.index') : $this->redirect('students.create');
+          try {
+       
+               // Insérer les données dans la base via le modèle
+               $store = $this->getManager(Student::class)->store($data, $files);
+       
+               // Redirection en cas de succès
+               if ($store) {
+                   $_SESSION['success'] = "Nouvel(le) étudiant(e) enregistré(e) avec succès";
+                   return $this->redirect('students.index');
+               }
+       
+               throw new \Exception("Erreur lors de l'enregistrement de l'étudiant(e).");
+               
+               } catch (\Exception $e) {
+                    // Stocker le message d'erreur en session
+                    $_SESSION['danger'] = $e->getMessage();
+                    return $this->redirect('students.create');
+               }
      }
 
      public function remove(int $id)
      {
-          $remove = $this->getManager(Student::class)->remove($id, "Etudiant(e) N° $id supprimé(e)");
+          $remove = $this->getManager(Student::class)->delete($id);
           return $this->redirect('students.index'); 
      }
 
