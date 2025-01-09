@@ -29,4 +29,12 @@ class Entity
           return $stmt->fetch(\PDO::FETCH_OBJ);
      }
 
+     public function remove(int $id)
+     {
+          $sql = "DELETE FROM $this->table WHERE id = :id";
+          $stmt = $this->db->getConn()->prepare($sql);
+          $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+          return $stmt->execute();
+     }
+
 }
