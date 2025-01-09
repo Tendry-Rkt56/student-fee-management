@@ -29,7 +29,7 @@ class Entity
           return $stmt->fetch(\PDO::FETCH_OBJ);
      }
 
-     protected function remove(int $id, string $message = 'Enregistrement supprimé')
+     public function remove(int $id, string $message = 'Enregistrement supprimé')
      {
           $sql = "DELETE FROM $this->table WHERE id = :id";
           $stmt = $this->db->getConn()->prepare($sql);

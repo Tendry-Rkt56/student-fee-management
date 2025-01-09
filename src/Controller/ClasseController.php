@@ -26,4 +26,10 @@ class ClasseController extends Controller
           return $this->redirect('classes.index');
      }
 
+     public function remove(int $id)
+     {
+          $remove = $this->getManager(Classe::class)->remove($id, "Classe N° $id supprimée");
+          return $this->redirect('classes.index');
+     }
+
 }
