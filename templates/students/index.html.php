@@ -17,6 +17,14 @@
                     <h2 class="title">Les étudiants</h2>
                     <a href="" class="btn btn-primary btn-sm">Ajouter</a>
                </div>
+               <?php if (isset($_SESSION)): ?>
+                    <?php foreach($_SESSION as $key => $value): ?>
+                         <?php if ($key == 'danger' || $key == 'success'):?>
+                              <p class="d-flex align-items-center justify-content-center container-sm alert alert-<?=$key?>"><?=$value?></p>
+                              <?php unset($_SESSION[$key])?>
+                         <?php endif?>
+                    <?php endforeach?>
+               <?php endif ?>
                <form action="" class="gap-4 justify-self-start container-fluid d-flex align-items-start justify-content-start flex-row gap-2">
                     <input value="<?=$data['search'] ?? ''?>" style="width:20%;" name="search" type="text" placeholder="Rechercher..." class="form-control">
                     <select style="width:20%;" class="form-select" name="classe" id="">
@@ -48,7 +56,7 @@
                                         <td>
                                              <div class="d-flex gap-1">
                                                   <a href="" class="btn btn-sm btn-success">Editer</a>
-                                                  <form action="">
+                                                  <form method="POST" action="/students/remove/<?=$student->id?>">
                                                        <input type="submit" class="btn btn-sm btn-danger" value="Supprimer">
                                                   </form>
                                              </div>

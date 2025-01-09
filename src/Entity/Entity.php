@@ -29,11 +29,12 @@ class Entity
           return $stmt->fetch(\PDO::FETCH_OBJ);
      }
 
-     public function remove(int $id)
+     public function remove(int $id, string $message = 'Enregistrement supprimé')
      {
           $sql = "DELETE FROM $this->table WHERE id = :id";
           $stmt = $this->db->getConn()->prepare($sql);
           $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+          $_SESSION['danger'] = $message;
           return $stmt->execute();
      }
 

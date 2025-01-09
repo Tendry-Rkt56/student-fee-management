@@ -23,6 +23,10 @@ $router->map('POST', '/students/create', function () use ($container) {
      $container->getController(StudentController::class)->store($_POST);
 }, 'students.store');
 
+$router->map('POST', '/students/remove/[i:id]', function ($id) use ($container) {
+     $container->getController(StudentController::class)->remove($id);
+}, 'students.remove');
+
 $router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard());
 
 $match = $router->match();

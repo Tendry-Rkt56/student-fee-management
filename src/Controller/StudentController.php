@@ -33,4 +33,10 @@ class StudentController extends Controller
           return $store ? $this->redirect('students.index') : $this->redirect('students.create');
      }
 
+     public function remove(int $id)
+     {
+          $remove = $this->getManager(Student::class)->remove($id, "Etudiant(e) N° $id supprimé(e)");
+          return $this->redirect('students.index'); 
+     }
+
 }

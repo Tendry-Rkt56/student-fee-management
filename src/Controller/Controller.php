@@ -10,7 +10,7 @@ class Controller
 
      public function __construct(protected App $container, protected AltoRouter $router)
      {    
-
+          if (session_status() == PHP_SESSION_NONE) session_start();
      }
 
      /**
