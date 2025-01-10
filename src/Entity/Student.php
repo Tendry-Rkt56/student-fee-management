@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Controller\Validator;
+use App\Validator\Validator;
 
 class Student extends Entity
 {
