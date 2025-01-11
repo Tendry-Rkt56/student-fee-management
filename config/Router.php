@@ -53,7 +53,9 @@ $router->map('POST', '/classes/[i:id]', fn ($id) => $container->getController(Cl
 // Routes concernant les classes
 
 // Routes concernant les classes
-$router->map('GET', '/payment', fn () => $container->getController(PaymentController::class)->index());
+$router->map('GET', '/payment', fn () => $container->getController(PaymentController::class)->liste());
+$router->map('GET', '/payment/new', fn () => $container->getController(PaymentController::class)->index());
+$router->map('POST', '/payment/new', fn () => $container->getController(PaymentController::class)->store($_POST));
 // Routes concernant les classes
 
 

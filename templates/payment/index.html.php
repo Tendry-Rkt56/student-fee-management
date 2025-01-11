@@ -15,7 +15,7 @@
      <div class="containers">
           <div class="form-container">
                <h3 class="form-title">Ajouter un Paiement</h3>
-               <form action="add_payment.php" method="POST">
+               <form action="" method="POST">
                     <!-- Champ pour sélectionner l'étudiant -->
                     <div class="mb-3">
                          <label for="student_id" class="form-label">Étudiant</label>
@@ -26,26 +26,26 @@
                     <!-- Champ pour le mois -->
                     <div class="mb-3">
                          <label for="month" class="form-label">Mois</label>
-                         <select class="form-select" id="month" name="month" required>
+                         <select class="form-select" id="month" name="mois" required>
                               <option value="">Sélectionnez un mois</option>
-                              <option value="01">Janvier</option>
-                              <option value="02">Février</option>
-                              <option value="03">Mars</option>
-                              <option value="04">Avril</option>
-                              <option value="05">Mai</option>
-                              <option value="06">Juin</option>
-                              <option value="07">Juillet</option>
-                              <option value="08">Août</option>
-                              <option value="09">Septembre</option>
-                              <option value="10">Octobre</option>
-                              <option value="11">Novembre</option>
-                              <option value="12">Décembre</option>
+                              <option value="Janvier">Janvier</option>
+                              <option value="Février">Février</option>
+                              <option value="Mars">Mars</option>
+                              <option value="Avril">Avril</option>
+                              <option value="Mai">Mai</option>
+                              <option value="Juin">Juin</option>
+                              <option value="Juillet">Juillet</option>
+                              <option value="Août">Août</option>
+                              <option value="Septembre">Septembre</option>
+                              <option value="Octobre">Octobre</option>
+                              <option value="Novembre">Novembre</option>
+                              <option value="Décembre">Décembre</option>
                          </select>
                     </div>
                     <!-- Champ pour l'année -->
                     <div class="mb-3">
                          <label for="year" class="form-label">Année</label>
-                         <select class="form-select" id="year" name="year" required>
+                         <select class="form-select" id="year" name="annee" required>
                               <option value="">Sélectionnez une année</option>
                               <?php
                               // PHP pour générer dynamiquement les options d'année
@@ -60,6 +60,11 @@
                     <div class="mb-3">
                          <label for="amount" class="form-label">Montant</label>
                          <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0" placeholder="Entrez le montant payé" required>
+                    </div>
+
+                    <div class="mb-3">
+                         <label for="date" class="form-label">Date de paiement</label>
+                         <input type="date" class="form-control" id="date" name="date" placeholder="Date..." required>
                     </div>
                     <!-- Bouton de soumission -->
                     <div class="d-grid">

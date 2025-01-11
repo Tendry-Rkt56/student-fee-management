@@ -29,6 +29,7 @@
                          <tr>
                               <th></th>
                               <th>Nom</th>
+                              <th>Ecolage</th>
                               <th>Date de création</th>
                               <th></th>
                          </tr>
@@ -39,6 +40,7 @@
                                    <tr>
                                         <td></td>
                                         <td class="fw-bolder"><?=$classe->nom?></td>
+                                        <td class="fw-bolder" style="color:blueviolet"><?=number_format($classe->amount, 0, '.', ' ')?> Ar</td>
                                         <td><?=FormatDate($classe->created_at)?></td>
                                         <td>
                                              <div class="d-flex gap-1">
