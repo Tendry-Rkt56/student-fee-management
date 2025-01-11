@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Classe;
+use App\Entity\Payment;
 use App\Entity\Student;
 
 class StudentController extends Controller
@@ -39,8 +40,10 @@ class StudentController extends Controller
      public function show(int $id)
      {
           $student = $this->getManager(Student::class)->findOne($id);
+          $payments = $this->getManager(Payment::class)->findBy($id);
           return $this->render('students.show', [
                'student' => $student,
+               'payments' => $payments,
           ]);
      }
 

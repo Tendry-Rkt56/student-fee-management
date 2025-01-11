@@ -5,6 +5,8 @@ namespace App\Entity;
 class Payment extends Entity
 {
 
+     protected $table = 'payments';
+
      public function store(array $data = [])
      {
           $sql = "INSERT INTO payments(student_id, amount, mois, annee, payment_date) VALUES (:student, :amount, :mois, :annee, :date)";
@@ -17,6 +19,21 @@ class Payment extends Entity
           $query->bindValue(':date', $date);
           $_SESSION['success'] = "Paiement enregistré";
           return $query->execute();
+     }
+
+     public function findBy(int $student)
+     {
+          $sql = "SELECT p.* FROM payments p WHERE p.student_id = :student
+               OR (
+                    (p.annee = 2024 AND p.mois IN ('October', 'November', 'December')) OR (p.annee = 2025 AND p.mois IN ('January', 'February', 'March', 'April', 'May', 'June'))
+               )
+               ORDER BY p.annee ASC, FIELD(p.mois, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December') ASC,
+               p.payment_date ASC;
+          ";
+          $query = $this->db->getConn()->prepare($sql);
+          $query->bindValue(':student', $student, \PDO::PARAM_INT);
+          $query->execute();
+          return $query->fetchAll(\PDO::FETCH_OBJ);
      }
 
      public function getAll()

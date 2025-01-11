@@ -36,24 +36,15 @@
                                    </tr>
                               </thead>
                               <tbody>
-                                   <tr>
-                                        <td>Janvier</td>
-                                        <td>50 000</td>
-                                        <td>05 Janvier 2023</td>
-                                        <td>Payé</td>
-                                   </tr>
-                                   <tr>
-                                        <td>Février</td>
-                                        <td>50 000</td>
-                                        <td>07 Février 2023</td>
-                                        <td>Payé</td>
-                                   </tr>
-                                   <tr>
-                                        <td>Mars</td>
-                                        <td>50 000</td>
-                                        <td>-</td>
-                                        <td>En attente</td>
-                                   </tr>
+                                   <?php foreach($payments as $payment): ?>
+                                        <tr>
+                                             <?php $rest = Amount($payment->amount, $student->ecolage) ?>
+                                             <td><?=$payment->mois?> <?=$payment->annee?></td>
+                                             <td><?=number_format($payment->amount, 0, '.', ' ')?> <?php if ($rest > 0): ?> <span style="color:red">(-<?=$rest?>)</span> <?php endif ?></td>
+                                             <td><?=FormatDate($payment->payment_date)?></td>
+                                             <td><?=Amount($payment->amount, $student->ecolage)?></td>
+                                        </tr>
+                                   <?php endforeach ?>
                               </tbody>
                          </table>
                     </section>

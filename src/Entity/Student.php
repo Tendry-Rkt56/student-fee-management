@@ -79,7 +79,7 @@ class Student extends Entity
 
      public function findOne(int $id)
      {
-          $sql = "SELECT s.*, c.id AS idClass, c.nom AS nomClass FROM students AS s LEFT JOIN classes AS c ON 
+          $sql = "SELECT s.*, c.id AS idClass, c.nom AS nomClass, c.amount AS ecolage FROM students AS s LEFT JOIN classes AS c ON 
                s.class_id = c.id WHERE s.id = :id";
           $query = $this->db->getConn()->prepare($sql);
           $query->bindValue(':id', $id, \PDO::PARAM_INT);

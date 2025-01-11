@@ -9,7 +9,8 @@
             "helpers/Color.php",
             "helpers/Path.php",
             "helpers/FormatDate.php",
-            "helpers/ImageUpload.php"
+            "helpers/ImageUpload.php",
+            "helpers/Amount.php"
         ]
     },
     "authors": [
