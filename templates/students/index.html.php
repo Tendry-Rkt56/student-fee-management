@@ -32,8 +32,8 @@
                               <option <?php if (array_key_exists('classe', $data) && $data['classe'] == $classe->id): ?> selected <?php endif ?> value="<?=$classe->id?>"><?=$classe->nom?></option>     
                          <?php endforeach ?>
                     </select>
-                    <input value="<?=$limit?>" style="width:10%;" name="limit" type="number" placeholder="Pagination..." class="form-control">
-                    <input type="submit" class="btn btn-sm btn-primary">
+                    <input value="<?=$limit?>" id="limit" style="width:10%;" name="limit" type="number" placeholder="Pagination..." class="form-control">
+                    <input type="submit" class="btn btn-sm btn-primary" value="Rechercher">
                </form>
                <table style="font-family:Poppins;" class="table table-striped">
                     <thead>
@@ -92,6 +92,8 @@
                </div>
           </div>
      </div>
+
+     <script src="/assets/script/input.js"></script>
 
 </body>
 </html>

@@ -11,8 +11,8 @@ class StudentController extends Controller
      public function index(array $data = [])
      {
           $count = $this->getManager(Student::class)->count($data);
-          $page = $data['page'] ?? 1;
-          $limit = $data['limit'] ?? 3;
+          $page = isset($data['page']) && !empty($data['page']) ? $data['page'] : 1;
+          $limit = isset($data['limit']) && !empty($data['limit']) ? $data['limit'] : 10;
           $maxPages = ceil($count / $limit);
           $offset = ($page - 1) * $limit;  
           $students = $this->getManager(Student::class)->findWithClasse($limit, $offset, $data);
