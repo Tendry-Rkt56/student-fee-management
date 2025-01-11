@@ -21,6 +21,7 @@
                               <p>Date de Naissance : <?=FormatDate($student->dob)?></p>
                               <p>Classe : <?=$student->nomClass?></p>
                               <p>Contact : 034 64 131 85</p>
+                              <a href="<?=Path('students.edit', ['id' => $student->id])?>" class="btn btn-sm btn-success">Editer</a>
                          </div>
                     </div>
                     <section class="payments">
