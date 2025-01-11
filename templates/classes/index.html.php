@@ -14,7 +14,7 @@
           <div class="container-fluid d-flex align-items-center justify-content-center flex-column gap-3">
                <div class="container-sm d-flex align-items-center justify-content-between flex-row">
                     <h2 class="title">Les classes</h2>
-                    <a href="<?=Path('classes.create')?>" class="mr-5 btn btn-primary">Ajouter</a>
+                    <a href="<?=path('classes.create')?>" class="mr-5 btn btn-primary">Ajouter</a>
                </div>
                <?php if (isset($_SESSION)): ?>
                     <?php foreach($_SESSION as $key => $value): ?>
@@ -41,12 +41,12 @@
                                         <td></td>
                                         <td class="fw-bolder"><?=$classe->nom?></td>
                                         <td class="fw-bolder" style="color:blueviolet"><?=number_format($classe->amount, 0, '.', ' ')?> Ar</td>
-                                        <td><?=FormatDate($classe->created_at)?></td>
+                                        <td><?=formatDate($classe->created_at)?></td>
                                         <td>
                                              <div class="d-flex gap-1">
-                                                  <a href="<?=Path('classes.edit', ['id' => $classe->id])?>" class="btn btn-sm btn-success">Editer</a>
+                                                  <a href="<?=path('classes.edit', ['id' => $classe->id])?>" class="btn btn-sm btn-success">Editer</a>
                                                   <a href="/students?classe=<?=$classe->id?>" class="btn btn-sm btn-primary">Les étudiants</a>
-                                                  <form method="POST" action="<?=Path('classes.remove', ['id' => $classe->id])?>">
+                                                  <form method="POST" action="<?=path('classes.remove', ['id' => $classe->id])?>">
                                                        <input type="submit" class="btn btn-sm btn-danger" value="Supprimer">
                                                   </form>
                                              </div>

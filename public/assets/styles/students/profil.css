@@ -71,7 +71,7 @@
    
    td:last-child {
      text-transform: capitalize;
-     color: #388e3c;
+     /* color: #388e3c; */
    }
    
    td:last-child:contains("en attente") {

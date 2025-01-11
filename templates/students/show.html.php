@@ -38,11 +38,11 @@
                               <tbody>
                                    <?php foreach($payments as $payment): ?>
                                         <tr>
-                                             <?php $rest = Amount($payment->amount, $student->ecolage) ?>
+                                             <?php $rest = amount($payment->amount, $student->ecolage) ?>
                                              <td><?=$payment->mois?> <?=$payment->annee?></td>
-                                             <td><?=number_format($payment->amount, 0, '.', ' ')?> <?php if ($rest > 0): ?> <span style="color:red">(-<?=$rest?>)</span> <?php endif ?></td>
-                                             <td><?=FormatDate($payment->payment_date)?></td>
-                                             <td><?=Amount($payment->amount, $student->ecolage)?></td>
+                                             <td><?=number_format($payment->amount, 0, '.', ' ')?> <?php if ($rest > 0): ?> <span style="color:red">(-<?=($rest)?>)</span> <?php endif ?></td>
+                                             <td><?=formatDate($payment->payment_date)?></td>
+                                             <td><?=status($payment->amount, $student->ecolage)?></td>
                                         </tr>
                                    <?php endforeach ?>
                               </tbody>

@@ -97,7 +97,7 @@ class Student extends Entity
           $query->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
           $query->bindValue(':class_id', $classe, \PDO::PARAM_INT);
           $query->bindValue(':dob', $dob);
-          $query->bindValue(':image', ImageUpload($files['image'], 'images/students/'));
+          $query->bindValue(':image', imageUpload($files['image'], 'images/students/'));
           return $query->execute();
      }
 
@@ -111,7 +111,7 @@ class Student extends Entity
           $query->bindValue(':prenom', $prenom, \PDO::PARAM_STR);
           $query->bindValue(':class_id', $classe, \PDO::PARAM_INT);
           $query->bindValue(':dob', $dob);
-          $query->bindValue(':image', ImageUpload($files['image'], 'images/students/', $student));
+          $query->bindValue(':image', imageUpload($files['image'], 'images/students/', $student));
           $query->bindValue(':id', $id, \PDO::PARAM_INT);
           return $query->execute();
      }
