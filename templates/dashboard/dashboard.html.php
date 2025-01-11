@@ -4,8 +4,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Accueil</title>
-     <link rel="stylesheet" href="/assets/styles/base.css">
-     <link rel="stylesheet" href="/assets/styles/bootstrap.min.css">
+     <?php require_once 'components/head.html' ?>
      <link rel="stylesheet" href="/assets/styles/dashboard.css">
 </head>
 <body>

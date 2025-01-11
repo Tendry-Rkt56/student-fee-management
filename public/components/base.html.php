@@ -23,11 +23,11 @@ $uri = $_SERVER['REQUEST_URI'];
                     <span class="icons"><i class='bx bxs-home'></i></span>
                     <span class="text">Accueil</span>
                </a>
-               <a class="<?=str_contains($uri, '/publications') ? 'active' : ''?>" style="text-decoration:none;" href="<?=Path('students.index')?>">
+               <a class="<?=str_contains($uri, '/students') ? 'active' : ''?>" style="text-decoration:none;" href="<?=Path('students.index')?>">
                     <span class="icons"><i class='bx bxs-map'></i></span>
                     <span class="text">Etudiants</span>
                </a>
-               <a class="<?=str_contains($uri, '/category') ? 'active' : ''?>" style="text-decoration:none" href="<?=Path('classes.index')?>">
+               <a class="<?=str_contains($uri, '/classes') ? 'active' : ''?>" style="text-decoration:none" href="<?=Path('classes.index')?>">
                     <span class="icons"><i class='bx bx-category'></i></span>
                     <span class="text">Classes</span>
                </a>
