@@ -24,8 +24,8 @@ class Validator
 
      public static function required(string $field, string $value)
      {
-          if (!isset($value) && empty($value)) throw new \Exception("Le champ $field est requis");
-          return $value;
+          if (!isset($value) || empty($value)) throw new \Exception("Le champ $field est requis");
+          return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
      }
 
      public static function email(string $field, string $email)
