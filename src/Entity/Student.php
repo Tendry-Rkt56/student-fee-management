@@ -95,7 +95,7 @@ class Student extends Entity
           $sql = "INSERT INTO students(nom, prenom, class_id, dob, image) VALUES(:nom, :prenom, :class_id, :dob, :image)";
           $query = $this->db->getConn()->prepare($sql);
           extract($data);
-          $query->bindValue(':nom', Validator::required('nom', $nom), \PDO::PARAM_STR);
+          $query->bindValue(':nom', strtoupper(Validator::unique('students', 'nom', 'nom', $nom)), \PDO::PARAM_STR);
           $query->bindValue(':prenom', Validator::required('prenom', $prenom), \PDO::PARAM_STR);
           $query->bindValue(':class_id', Validator::required('classe', $classe), \PDO::PARAM_INT);
           $query->bindValue(':dob', $dob);

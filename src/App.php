@@ -20,6 +20,9 @@ class App
           return self::$_instance;
      }
 
+     /**
+      * @return DataBase
+      */
      public function getDb()
      {
           if (self::$_db == null) self::$_db = new DataBase(DB_NAME);
