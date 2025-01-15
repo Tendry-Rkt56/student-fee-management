@@ -63,7 +63,7 @@ $router->map('POST', '/payment/edit/[i:id]', fn ($id) => $container->getControll
 // Routes concernant les payments
 
 
-$router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard());
+$router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard(), 'app.dashboard');
 
 $match = $router->match();
 if ($match !== null) {
