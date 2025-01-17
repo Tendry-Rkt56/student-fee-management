@@ -1,6 +1,6 @@
 <?php
   
-function ImageUpload(?array $file, string $uploadDir = 'uploads/', mixed $object = null): ?string
+function imageUpload(?array $file, string $uploadDir = 'uploads/', mixed $object = null): ?string
 {
      if (empty($file) || $file['error'] === UPLOAD_ERR_NO_FILE) {
           return null;
