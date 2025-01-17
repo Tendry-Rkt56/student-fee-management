@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="passwords" required>
+                        <input type="password" id="password" name="password" required>
                     </div>
                     <button type="submit">Se connecter</button>
                 </form>

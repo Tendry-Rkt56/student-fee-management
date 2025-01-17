@@ -35,14 +35,14 @@ class Validator
 
      public static function email(string $field, string $email)
      {
-          self::required($field, $email);
+          $email = self::required($field, $email);
           if (!filter_var($email, FILTER_VALIDATE_EMAIL)) throw new \Exception("L'email n'est pas valide");
           return $email;
      }
 
      public static function unique(string $table, string $colonne, string $field, string $value): string
      {
-          self::required($field, $value);
+          $value = self::email($field, $value);
           $sql = "SELECT count(*) FROM $table WHERE $colonne = :value";
           $query = App::getInstance()->getDb()->getConn()->prepare($sql);
           $query->bindValue(':value', $value, \PDO::PARAM_STR);
