@@ -22,7 +22,7 @@ class SecurityController extends Controller
           }
           catch(\Exception $e) {
                $_SESSION['danger'] = $e->getMessage();
-               return $this->redirect('app.login');
+               return $this->redirect('app.loginView');
           }
      }
 

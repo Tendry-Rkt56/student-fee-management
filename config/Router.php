@@ -4,6 +4,7 @@ use App\Container;
 use App\Controller\ClasseController;
 use App\Controller\DashboardController;
 use App\Controller\PaymentController;
+use App\Controller\SecurityController;
 use App\Controller\StudentController;
 use Services\Routing;
 
@@ -64,6 +65,9 @@ $router->map('POST', '/payment/edit/[i:id]', fn ($id) => $container->getControll
 
 
 $router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard(), 'app.dashboard');
+
+$router->map('GET', '/login', fn () => $container->getController(SecurityController::class)->loginView(), 'app.loginView');
+$router->map('GET', '/login', fn () => $container->getController(SecurityController::class)->loginView(), 'app.login');
 
 $match = $router->match();
 if ($match !== null) {
