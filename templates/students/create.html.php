@@ -5,6 +5,7 @@
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>Nouvel étudiant</title>
           <?php require_once 'components/head.html' ?>
+          <script src="/assets/script/nameFormatter.js" defer></script>
      </head>
      <body>
 
@@ -25,11 +26,11 @@
                          <div class="row container">
                               <div class="col-sm-6 d-flex align-items-center justify-content-center flex-row gap-1">
                                    <label style="width:20%" for="nom" class="fw-bolder">Nom:</label>
-                                   <input style="width:80%" type="text" name="nom" id="nom" class="form-control" placeholder="Nom...">
+                                   <input id="name" style="width:80%" type="text" name="nom" id="nom" class="form-control" placeholder="Nom...">
                               </div>
                               <div class="col-sm-6 d-flex align-items-center justify-content-center flex-row gap-1">
                                    <label style="width:20%" for="prenom" class="fw-bolder">Prénom:</label>
-                                   <input style="width:80%" type="text" name="prenom" id="prenom" class="form-control" placeholder="Prénom...">
+                                   <input id="prenom" style="width:80%" type="text" name="prenom" id="prenom" class="form-control" placeholder="Prénom...">
                               </div>
                          </div>
                          <div class="row container">
