@@ -38,4 +38,13 @@ class Entity
           return $stmt->execute();
      }
 
+     protected function unique(string $colonne, string $value): bool
+     {
+          $sql = "SELECT count(*) FROM $this->table WHERE $colonne = :value";
+          $query = $this->db->getConn()->prepare($sql);
+          $query->bindValue(':value', $value, \PDO::PARAM_STR);
+          if ($query->fetchColumn() > 1) throw new \Exception("$value déjà utilisé");
+          return true;
+     }
+
 }
