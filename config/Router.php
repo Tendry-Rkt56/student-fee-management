@@ -52,11 +52,13 @@ $router->map('GET', '/classes/[i:id]', fn ($id) => $container->getController(Cla
 $router->map('POST', '/classes/[i:id]', fn ($id) => $container->getController(ClasseController::class)->update($id, $_POST), 'classes.update');
 // Routes concernant les classes
 
-// Routes concernant les classes
-$router->map('GET', '/payment', fn () => $container->getController(PaymentController::class)->liste());
-$router->map('GET', '/payment/new', fn () => $container->getController(PaymentController::class)->index());
-$router->map('POST', '/payment/new', fn () => $container->getController(PaymentController::class)->store($_POST));
-// Routes concernant les classes
+// Routes concernant les payments
+$router->map('GET', '/payment', fn () => $container->getController(PaymentController::class)->liste(), 'payment.liste');
+$router->map('GET', '/payment/new', fn () => $container->getController(PaymentController::class)->index(), 'payment.create');
+$router->map('POST', '/payment/new', fn () => $container->getController(PaymentController::class)->store($_POST), 'payment.store');
+$router->map('GET', '/payment/edit/[i:id]', fn ($id) => $container->getController(PaymentController::class)->edit($id), 'payment.edit');
+$router->map('POST', '/payment/edit/[i:id]', fn ($id) => $container->getController(PaymentController::class)->update($id, $_POST), 'payment.update');
+// Routes concernant les payments
 
 
 $router->map('GET', '/', fn () => $container->getController(DashboardController::class)->dashboard());

@@ -21,6 +21,15 @@ class Payment extends Entity
           return $query->execute();
      }
 
+     public function findWithStudent(int $id)
+     {
+          $sql = "SELECT s.nom, s.prenom FROM payments p JOIN students s ON s.id = p.student_id WHERE p.id = :id";
+          $query = $this->db->getConn()->prepare($sql);
+          $query->bindValue(':id', $id, \PDO::PARAM_INT);
+          $query->execute();
+          return $query->fetch(\PDO::FETCH_OBJ);
+     }
+
      public function findBy(int $student)
      {
           $sql = "SELECT p.* FROM payments p WHERE p.student_id = :student
@@ -40,6 +49,17 @@ class Payment extends Entity
      {
           $sql = "SELECT p.*, s.nom, s.prenom, s.image FROM payments AS p LEFT JOIN students AS s ON p.student_id = s.id WHERE p.id > 0";
           return $this->db->getConn()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+     }
+
+     public function update(int $id, array $data = [])
+     {
+          $sql = "UPDATE payments SET amount = :amount, updated_at = :updated WHERE id = :id";
+          $query = $this->db->getConn()->prepare($sql);
+          $query->bindValue(':amount', $data['amount'], \PDO::PARAM_INT);
+          $query->bindValue(':updated', (new \DateTime())->format('Y-m-d H:i:s'), \PDO::PARAM_STR);
+          $query->bindValue(':id', $id, \PDO::PARAM_INT);
+          $_SESSION['success'] = "Paiement mise à jour";
+          return $query->execute();
      }
 
 }

@@ -32,7 +32,9 @@
                                         <th>Mois</th>
                                         <th>Montant Payé (Ar)</th>
                                         <th>Date de Paiement</th>
+                                        <th>Dérnière modification</th>
                                         <th>Status</th>
+                                        <th></th>
                                    </tr>
                               </thead>
                               <tbody>
@@ -40,9 +42,15 @@
                                         <tr>
                                              <?php $rest = amount($payment->amount, $student->ecolage) ?>
                                              <td><?=$payment->mois?> <?=$payment->annee?></td>
-                                             <td><?=number_format($payment->amount, 0, '.', ' ')?> <?php if ($rest > 0): ?> <span style="color:red">(-<?=($rest)?>)</span> <?php endif ?></td>
+                                             <td><?=number_format($payment->amount, 0, '.', ' ')?> <?php if ($rest > 0): ?> <span style="color:red">(-<?=number_format($rest, 0, '.', ' ')?>)</span> <?php endif ?></td>
                                              <td><?=formatDate($payment->payment_date)?></td>
+                                             <td><?=formatDate($payment->updated_at)?></td>
                                              <td><?=status($payment->amount, $student->ecolage)?></td>
+                                             <td>
+                                                  <div class="d-flex mx-1">
+                                                       <a href="<?=path('payment.edit', ['id' => $payment->id])?>" class="btn btn-sm btn-success">Modifier</a>
+                                                  </div>
+                                             </td>
                                         </tr>
                                    <?php endforeach ?>
                               </tbody>
