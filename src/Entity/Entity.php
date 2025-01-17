@@ -2,16 +2,18 @@
 
 namespace App\Entity;
 
+use App\Controller\Validator;
 use Services\DataBase;
 
 class Entity 
 {
 
      protected $table = '';
+     protected $validator;
 
      public function __construct(protected DataBase $db)
      {
-          
+          $this->validator = Validator::get();
      }
 
      public function findAll()
