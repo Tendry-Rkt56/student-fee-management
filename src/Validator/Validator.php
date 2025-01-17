@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Controller;
+namespace App\Validator;
 
-use Exception;
 
 class Validator
 {
