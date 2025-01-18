@@ -14,7 +14,7 @@ $router = Routing::get();
 
 $container = new Container();
 
-// $middleware = new \App\Middleware\AppMiddleware();
+$middleware = new \App\Middleware\AppMiddleware();
 
 // Routes concernant les étudiants
 $router->map('GET', '/students', function () use ($container) {
