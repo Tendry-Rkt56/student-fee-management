@@ -10,7 +10,7 @@ $uri = $_SERVER['REQUEST_URI'];
           <?php if (isset($_SESSION['user']->image)): ?>
                <img src="<?=$_SESSION['user']->image?>" alt="">
           <?php endif ?>
-          <span class="admin-name"><?=$_SESSION['user']->prenom?></span>
+          <span class="admin-name"><?=$_SESSION['user']->nom?> <?=$_SESSION['user']->prenom?></span>
      </div>
 </header>
 <div class="sidebar">
@@ -40,7 +40,7 @@ $uri = $_SERVER['REQUEST_URI'];
                     <span class="text">Galerie</span>
                </a>
                <?php if (isset($_SESSION['user'])): ?>
-                    <form class="mt-4" action="/logout" method="POST">
+                    <form class="mt-4" action="<?=path('app.logout')?>" method="POST">
                          <input type="hidden" name="token">
                          <button type="submit" class="btn btn-danger">Se déconnecter</button>
                     </form>     

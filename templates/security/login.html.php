@@ -17,7 +17,7 @@
             <div class="login-form">
                 <h2>Connexion</h2>
                <?php if (isset($_SESSION['danger'])): ?>
-                    <div style="height:50px;" class="container alert alert-danger"><?=$_SESSION['danger']?></div>
+                    <div style="height:50px;" class="mt-3 container d-flex align-items-center justify-content-center alert alert-danger"><?=$_SESSION['danger']?></div>
                     <?php unset($_SESSION['danger']) ?>
                <?php endif?>
                 <form action="" autocomplete="off" method="POST">

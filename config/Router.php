@@ -70,6 +70,7 @@ $router->map('GET', '/login', fn () => $container->getController(SecurityControl
 $router->map('POST', '/login', fn () => $container->getController(SecurityController::class)->login($_POST), 'app.login');
 $router->map('GET', '/register', fn () => $container->getController(SecurityController::class)->register(), 'app.register');
 $router->map('POST', '/register', fn () => $container->getController(SecurityController::class)->store($_POST, $_FILES), 'app.store');
+$router->map('POST', '/logout', fn () => $container->getController(SecurityController::class)->logout(), 'app.logout');
 
 $match = $router->match();
 if ($match !== null) {
