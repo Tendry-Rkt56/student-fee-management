@@ -18,7 +18,7 @@ class SecurityController extends Controller
           try {
                $login = $this->getManager(User::class)->login($data);
                if ($login) return $this->redirect('app.dashboard');
-               throw new \Exception("Erreur serveur");
+               throw new \Exception("Invalid credentials");
           }
           catch(\Exception $e) {
                $_SESSION['danger'] = $e->getMessage();
@@ -46,6 +46,12 @@ class SecurityController extends Controller
                $_SESSION['danger'] = $e->getMessage();
                return $this->redirect('app.register');
           }
+     }
+
+     public function logout()
+     {
+          unset($_SESSION['user']);
+          return $this->redirect('app.login');
      }
 
 }

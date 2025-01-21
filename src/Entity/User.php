@@ -18,6 +18,7 @@ class User extends Entity
           $user = $query->fetch(\PDO::FETCH_OBJ);
           if ($user && password_verify($data['password'], $user->password)) {
                $_SESSION['user'] = $user;
+               if (isset($_SESSION['email'])) unset($_SESSION['email']);
                return true;
           }
           $_SESSION['email'] = $data['email'];
