@@ -36,7 +36,6 @@ class User extends Entity
           $query->bindValue(':email', Validator::unique('users', 'email', 'email', $email), \PDO::PARAM_STR);
           $query->bindValue(':image', imageUpload($files['image'], "images/users/"));
           $query->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), \PDO::PARAM_STR);
-          $_SESSION['success'] = "Nouvel utilisateur crée";
           return $query->execute();
      }
 
