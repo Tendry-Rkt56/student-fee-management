@@ -24,20 +24,16 @@ $uri = $_SERVER['REQUEST_URI'];
                     <span class="text">Accueil</span>
                </a>
                <a class="<?=str_contains($uri, '/students') ? 'active' : ''?>" style="text-decoration:none;" href="<?=Path('students.index')?>">
-                    <span class="icons"><i class='bx bxs-map'></i></span>
+                    <span class="icons"><i class='bx bxs-user'></i></span>
                     <span class="text">Etudiants</span>
                </a>
                <a class="<?=str_contains($uri, '/classes') ? 'active' : ''?>" style="text-decoration:none" href="<?=Path('classes.index')?>">
-                    <span class="icons"><i class='bx bx-category'></i></span>
+                    <span class="icons"><i class='bx bxs-school'></i></span>
                     <span class="text">Classes</span>
                </a>
-               <a style="text-decoration:none;" href="/users" class="<?=str_contains($uri, '/users') ? 'active' : ''?>">
-                    <span class="icons"><i class='bx bxs-user'></i></span>
-                    <span class="text">Utilisateurs</span>
-               </a>
-               <a style="text-decoration:none;" href="/gallery" class="<?=str_contains($uri, '/gallery') ? 'active' : ''?>">
-                    <span class="icons"><i class='bx bx-images'></i></span>
-                    <span class="text">Galerie</span>
+               <a href="<?=path('payment.liste')?>" style="text-decoration:none;" class="<?=str_contains($uri, '/payment') ? 'active' : ''?>">
+                    <span class="icons"><i class='bx bx-wallet'></i></span>
+                    <span class="text">Payements</span>
                </a>
                <?php if (isset($_SESSION['user'])): ?>
                     <form class="mt-4" action="<?=path('app.logout')?>" method="POST">

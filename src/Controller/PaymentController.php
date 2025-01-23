@@ -31,10 +31,12 @@ class PaymentController extends Controller
           return $this->redirect('payment.liste');
      }
 
-     public function liste()
+     public function liste(array $data = [])
      {
-          $payments = $this->getManager(Payment::class)->getAll();
-          return $this->render('payment.liste', compact('payments'));
+          $payments = $this->getManager(Payment::class)->getAll($data);
+          $months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+          $currentYear = date('Y');
+          return $this->render('payment.liste', compact('payments', 'months', 'data', 'currentYear'));
      }
 
 }

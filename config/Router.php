@@ -56,7 +56,7 @@ $router->map('POST', '/classes/[i:id]', fn ($id) => $container->getController(Cl
 // Routes concernant les classes
 
 // Routes concernant les payments
-$router->map('GET', '/payment', fn () => $container->getController(PaymentController::class)->liste(), 'payment.liste');
+$router->map('GET', '/payment', fn () => $container->getController(PaymentController::class)->liste($_GET), 'payment.liste');
 $router->map('GET', '/payment/new', fn () => $container->getController(PaymentController::class)->index(), 'payment.create');
 $router->map('POST', '/payment/new', fn () => $container->getController(PaymentController::class)->store($_POST), 'payment.store');
 $router->map('GET', '/payment/edit/[i:id]', fn ($id) => $container->getController(PaymentController::class)->edit($id), 'payment.edit');
