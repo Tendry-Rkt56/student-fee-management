@@ -140,6 +140,7 @@ header .profil-details {
      min-width:190px;
      padding: 0 15px 0 2px;
      width:20%;
+     text-decoration:none;
 }
 
 header .profil-details img {
