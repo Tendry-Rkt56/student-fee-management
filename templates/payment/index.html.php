@@ -27,7 +27,7 @@
                     <div class="mb-3">
                          <label for="month" class="form-label">Mois</label>
                          <select class="form-select" id="month" name="mois" required>
-                              <option value="">Sélectionnez un mois</option>
+                              <option value="">Sélectionnez le mois</option>
                               <option value="Janvier">Janvier</option>
                               <option value="Février">Février</option>
                               <option value="Mars">Mars</option>
@@ -46,11 +46,11 @@
                     <div class="mb-3">
                          <label for="year" class="form-label">Année</label>
                          <select class="form-select" id="year" name="annee" required>
-                              <option value="">Sélectionnez une année</option>
+                              <option value="">Sélectionnez l'année</option>
                               <?php
                               // PHP pour générer dynamiquement les options d'année
                               $currentYear = date('Y');
-                              for ($i = $currentYear; $i >= $currentYear - 10; $i--) {
+                              for ($i = $currentYear; $i >= $currentYear - 1; $i--) {
                               echo "<option value='$i'>$i</option>";
                               }
                               ?>

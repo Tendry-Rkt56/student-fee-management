@@ -27,5 +27,10 @@ class Classe extends Entity
           return $query->execute();
      }
 
+     public function count()
+     {
+          $sql = "SELECT count(*) FROM classes WHERE id > 0";
+          return $this->db->getConn()->query($sql)->fetchColumn();
+     }
 
 }

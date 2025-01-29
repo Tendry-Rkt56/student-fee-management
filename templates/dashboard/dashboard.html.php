@@ -13,18 +13,18 @@
 
      <div class="containers">
           <div class="box">
-               <div class="card">  
+               <a href="<?=path('students.index')?>" class="card">  
                     <h3>Total Étudiants</h3>
-                    <p>120</p>
-               </div>
-               <div class="card">
+                    <p><?=$students?></p>
+               </a>
+               <a href="<?=path('payment.liste')?>" class="card">
                     <h3>Paiements du Mois</h3>
-                    <p>75 000 Ar</p>
-               </div>
-               <div class="card">
+                    <p><?=number_format($payments, 0, '.', ' ')?> Ar</p>
+               </a>
+               <a href="<?=path('classes.index')?>" class="card">
                     <h3>Classes</h3>
-                    <p>6</p>
-               </div>
+                    <p><?=$classes?></p>
+               </a>
           </div>
      </div>
 

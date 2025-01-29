@@ -7,6 +7,12 @@ class Payment extends Entity
 
      protected $table = 'payments';
 
+     public function recent()
+     {
+          $sql = "SELECT SUM(amount) FROM $this->table WHERE id > 0 AND MONTH(payment_date) = MONTH(CURDATE()) AND YEAR(payment_date) = YEAR(CURDATE())";
+          return $this->db->getConn()->query($sql)->fetchColumn();
+     }
+
      public function store(array $data = [])
      {
           $sql = "INSERT INTO payments(student_id, amount, mois, annee, payment_date) VALUES (:student, :amount, :mois, :annee, :date)";
@@ -45,9 +51,18 @@ class Payment extends Entity
           return $query->fetchAll(\PDO::FETCH_OBJ);
      }
 
-     public function getAll()
+     public function getAll(array $data = [])
      {
-          $sql = "SELECT p.*, s.nom, s.prenom, s.image FROM payments AS p LEFT JOIN students AS s ON p.student_id = s.id WHERE p.id > 0";
+          $sql = "SELECT p.*, s.nom, s.prenom, s.image FROM payments AS p JOIN students AS s ON p.student_id = s.id WHERE p.id > 0";
+          if (isset($data['search'])) {
+               $sql .= " AND (s.nom LIKE '%$data[search]%' OR s.prenom LIKE '%$data[search]%')";
+          }
+          if (isset($data['month']) && !empty($data['month'])) {
+               $sql .= " AND p.mois = '$data[month]'";
+          }
+          if (isset($data['annee']) && !empty($data['annee'])) {
+               $sql .= " AND p.annee = '$data[annee]'";
+          }
           return $this->db->getConn()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
      }
 
