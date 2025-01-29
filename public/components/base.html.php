@@ -6,12 +6,12 @@ $uri = $_SERVER['REQUEST_URI'];
 <header>
      <i class='bx bx-menu' id="menu-icon"></i>
      <h3>Dashboard</h3>
-     <div class="profil-details">
+     <a href="<?=path('app.profil.edit')?>" class="profil-details">
           <?php if (isset($_SESSION['user']->image)): ?>
                <img src="<?=$_SESSION['user']->image?>" alt="">
           <?php endif ?>
           <span class="admin-name"><?=$_SESSION['user']->nom?> <?=$_SESSION['user']->prenom?></span>
-     </div>
+     </a>
 </header>
 <div class="sidebar">
      <div class="title">

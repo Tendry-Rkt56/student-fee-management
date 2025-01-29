@@ -40,12 +40,18 @@ class Validator
           return $email;
      }
 
-     public static function unique(string $table, string $colonne, string $field, string $value): string
+     public static function unique(string $table, string $colonne, string $field, string $value, ?int $id = null): string
      {
           $value = self::email($field, $value);
           $sql = "SELECT count(*) FROM $table WHERE $colonne = :value";
+          if ($id != null) {
+               $sql .= " AND id != :id";
+          }
           $query = App::getInstance()->getDb()->getConn()->prepare($sql);
           $query->bindValue(':value', $value, \PDO::PARAM_STR);
+          if (!is_null($id)) {
+               $query->bindValue(':id', $id, \PDO::PARAM_INT);
+          }
           $query->execute();
           if ($query->fetchColumn() == 0) return $value;
           throw new \Exception("$value existe déjà");
